@@ -6,12 +6,20 @@ export default props => (
         <li className='list-group-item list-group-item-danger font-weight-bold'>
             <input type='checkbox' />
             This todo is high priority
+            <span className="glyphicon glyphicon-trash pull-right ml-4"></span>
+            <span className="glyphicon glyphicon-edit pull-right"></span>
         </li>
         <li className='list-group-item list-group-item-success font-weight-bold'>
+            <input type='checkbox' />
             This todo is low priority
+            <span className="glyphicon glyphicon-trash pull-right ml-4"></span>
+            <span className="glyphicon glyphicon-edit pull-right"></span>
         </li>
         <li className='list-group-item list-group-item-warning font-weight-bold'>
+            <input type='checkbox' />
             This todo is medium priority
+            <span className="glyphicon glyphicon-trash pull-right ml-4"></span>
+            <span className="glyphicon glyphicon-edit pull-right"></span>
         </li>
         <li className='list-group-item list-group-item-success font-weight-bold'>
             <form className='outputUpdater'>
