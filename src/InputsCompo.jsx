@@ -6,7 +6,7 @@ export default props => (
             <div className='card-header'>Add new Todo</div>
             <div className='card-body'>
                 <p className='font-weight-bold'>I want to..</p>
-                <textarea />
+                <textarea className='create-todo-text'></textarea>
                 <p className='font-weight-bold'>How much of a priority is this?</p>
                 <select className='create-todo-priority'>
                     <option selected>
