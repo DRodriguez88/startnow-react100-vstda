@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InputsCompo from './InputsCompo';
+import OutputsCompo from './OutputsCompo';
 
 class App extends Component {
 
@@ -13,6 +14,9 @@ class App extends Component {
         </div>
         <div className='inputsCompo'>
           {<InputsCompo />}
+        </div>
+        <div className='outputsCompo'>
+          {<OutputsCompo />}
         </div>
       </div>
     );

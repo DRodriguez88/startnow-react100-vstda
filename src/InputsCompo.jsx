@@ -8,20 +8,23 @@ export default props => (
                 <p className='font-weight-bold'>I want to..</p>
                 <textarea />
                 <p className='font-weight-bold'>How much of a priority is this?</p>
-                <select>
-                    <option>
+                <select className='create-todo-priority'>
+                    <option selected>
+                        Select a priority
+                    </option>
+                    <option value='1'>
                         High priority
                     </option>
-                    <option>
+                    <option value='2'>
                         Medium priority
                     </option>
-                    <option>
+                    <option value='3'>
                         Low priority
                     </option>
                 </select>
             </div>
             <div className='card-footer'>
-            <button className='btn-success btn-block'>Add</button>
+            <button className='btn btn-success btn-block'>Add</button>
             </div>
         </div>
     </div>
