@@ -22,7 +22,7 @@ export default props => (
             <a className="edit-todo glyphicon glyphicon-edit pull-right"></a>
         </li>
         <li className='list-group-item list-group-item-success'>
-            <form className='outputUpdater'>
+            <form className='todoEditor'>
             <div className='form-group'>
                 <label for='description'>Description</label>
                 <textarea className='update-todo-text form-control' rows='4'>

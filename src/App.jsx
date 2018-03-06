@@ -3,6 +3,14 @@ import InputsCompo from './InputsCompo';
 import OutputsCompo from './OutputsCompo';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        description : [],
+        priority : '',
+        editEnabled : false
+    }
+  }
 
   render() {
     return (
