@@ -3,6 +3,6 @@ import Todos from './Todos';
 
 export default props => (
     <div>
-        {<Todos />}
+        {<Todos todoList={props.todoList}/>}
     </div>
 );

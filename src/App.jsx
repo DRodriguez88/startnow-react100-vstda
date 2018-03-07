@@ -29,7 +29,7 @@ export default class App extends Component {
           {<InputsCompo bigStateUpdater={this.bigStateUpdater}/>}
         </div>
         <div className='outputsCompo'>
-          {<OutputsCompo />}
+          {<OutputsCompo todoList={this.state.todoList}/>}
         </div>
       </div>
     )

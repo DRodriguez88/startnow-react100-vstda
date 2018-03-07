@@ -1,31 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default props => (
+export default class Todos extends Component {
+    constructor(props) {
+        super(props);
+      }
+
+    renderList(){
+        return(
+            this.props.todoList.map((todoItem, index) => 
+                <li className='list-group-item list-group-item-success' key={index}>
+                    <input type='checkbox' />
+                    <span className='todoDescription font-weight-bold'>{todoItem.description}</span>
+                    <a className='delete-todo glyphicon glyphicon-trash pull-right ml-4'></a>
+                    <a className='edit-todo glyphicon glyphicon-edit pull-right'></a>
+                </li>
+
+            )
+        )
+    }
+
+    render(){
+        return(
     <ul className='list-group mr-4'>
-        
-        <li className='list-group-item list-group-item-success'>
-            <input type='checkbox' />
-            <span className='todoDescription font-weight-bold'>Hello</span>
-            <a className="delete-todo glyphicon glyphicon-trash pull-right ml-4"></a>
-            <a className="edit-todo glyphicon glyphicon-edit pull-right"></a>
-        </li>
-        
+        {this.renderList()}     
     </ul>
-);
+        )
+    }
+}
 
-{/* <li className='list-group-item list-group-item-light text-dark'>View Todos</li>
-        <li className='list-group-item list-group-item-danger'>
-            <input type='checkbox' />
-            <span className='todoDescription font-weight-bold'>This mock-todo is high priority</span>
-            <a className="delete-todo glyphicon glyphicon-trash pull-right ml-4"></a>
-            <a className="edit-todo glyphicon glyphicon-edit pull-right"></a>
-        </li>
-        <li className='list-group-item list-group-item-success'>
-            <input type='checkbox' />
-            <span className='todoDescription font-weight-bold'>This mock-todo is low priority</span>
-            <a className="delete-todo glyphicon glyphicon-trash pull-right ml-4"></a>
-            <a className="edit-todo glyphicon glyphicon-edit pull-right"></a>
-        </li> */}
+    // <li className='list-group-item list-group-item-light text-dark'>View Todos</li>
+    //     <li className='list-group-item list-group-item-danger'>
+    //         <input type='checkbox' />
+    //         <span className='todoDescription font-weight-bold'>This mock-todo is high priority</span>
+    //         <a className="delete-todo glyphicon glyphicon-trash pull-right ml-4"></a>
+    //         <a className="edit-todo glyphicon glyphicon-edit pull-right"></a>
+    //     </li>
+    //     <li className='list-group-item list-group-item-success'>
+    //         <input type='checkbox' />
+    //         <span className='todoDescription font-weight-bold'>This mock-todo is low priority</span>
+    //         <a className="delete-todo glyphicon glyphicon-trash pull-right ml-4"></a>
+    //         <a className="edit-todo glyphicon glyphicon-edit pull-right"></a>
+    //     </li> 
 
 
         // <li className='list-group-item list-group-item-success'>
