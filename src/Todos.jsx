@@ -4,11 +4,18 @@ export default class Todos extends Component {
     constructor(props) {
         super(props);
       }
+    
+    priorityFunc(index){
+        var color = 'list-group-item list-group-item-success';
+        if (this.props.todoList[index].priority == '2'){color = 'list-group-item list-group-item-warning'}
+        else if (this.props.todoList[index].priority == '1'){color = 'list-group-item list-group-item-danger'}
+        return color;
+    }
 
     renderList(){
         return(
             this.props.todoList.map((todoItem, index) => 
-                <li className='list-group-item list-group-item-success' key={index}>
+                <li className={this.priorityFunc(index)} key={index}>
                     <input type='checkbox' />
                     <span className='todoDescription font-weight-bold'>{todoItem.description}</span>
                     <a className='delete-todo glyphicon glyphicon-trash pull-right ml-4'></a>
@@ -22,6 +29,19 @@ export default class Todos extends Component {
     render(){
         return(
     <ul className='list-group mr-4'>
+        <li className='list-group-item list-group-item-light text-dark'>
+            View todos
+        </li>
+        {
+            (this.props.todoList.length < 1) ?
+                <li className='list-group-item list-group-item-primary'>
+                    <div>
+                        <span className='todoDescription font-weight-bold'>Welcome to Very Simple Todo App!</span>
+                        <p>Get started now by adding a new todo on the left.</p>
+                    </div>
+                </li>
+                :<li hidden></li>
+        }
         {this.renderList()}     
     </ul>
         )

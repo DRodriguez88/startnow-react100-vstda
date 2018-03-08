@@ -6,7 +6,7 @@ export default class InputsCompo extends Component {
         this.state = {
             todos: [],
             description: '',
-            priority: '1',
+            priority: '0',
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -19,13 +19,15 @@ export default class InputsCompo extends Component {
       }
     
       handleClick(){
+          if (this.state.priority < 1 || this.state.description.length < 1){alert('Please complete both fields');return}
+          else{
         var newTodoObj = {
             description : this.state.description,
             priority : this.state.priority
         };
         this.setState({
             todos: this.state.todos.concat(newTodoObj)
-        },this.props.bigStateUpdater(this.state))
+        },this.props.bigStateUpdater(this.state))}
       }    
     
     
@@ -39,7 +41,10 @@ export default class InputsCompo extends Component {
                         <p className='font-weight-bold'>I want to..</p>
                         <textarea name='description' className='create-todo-text' onChange={this.handleChange}></textarea>
                         <p className='font-weight-bold'>How much of a priority is this?</p>
-                        <select name='priority' className='create-todo-priority' type='number' onChange={this.handleChange}>                
+                        <select name='priority' className='create-todo-priority' type='number' onChange={this.handleChange}>
+                            <option disabled selected>
+                                Choose a priority
+                            </option>                
                             <option value='1'>
                                 High priority
                             </option>

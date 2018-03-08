@@ -14,7 +14,7 @@ export default class App extends Component {
   bigStateUpdater (inputData) {
     this.setState({
       todoList: this.state.todoList.concat(inputData)
-    }, ()=>console.log(this.state));
+    });
   }
 
   render(){
