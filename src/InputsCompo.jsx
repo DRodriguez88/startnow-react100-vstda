@@ -35,7 +35,7 @@ export default class InputsCompo extends Component {
                         <textarea name='description' className='create-todo-text' onChange={this.handleChange}></textarea>
                         <p className='font-weight-bold'>How much of a priority is this?</p>
                         <select name='priority' className='create-todo-priority' type='number' onChange={this.handleChange}>
-                            <option disabled selected>
+                            <option>
                                 Choose a priority
                             </option>                
                             <option value='1'>

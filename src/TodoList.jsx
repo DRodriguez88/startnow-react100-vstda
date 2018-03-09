@@ -5,7 +5,7 @@ export default function Todos(props) {
     return (
         <div className='card'>
             <div className='card-header'>
-                View Todo
+                You have {props.todoList.length} todo items.
             </div>
             <ul className='list-group'>
             {

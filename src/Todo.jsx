@@ -6,12 +6,14 @@ export default class Todo extends Component {
         this.state = {
             description: props.todoItem.description,
             priority: props.todoItem.priority,
-            isEditing: false
+            isEditing: false,
+            isChecked: false
         }
         this.toggleEditing = this.toggleEditing.bind(this);
         this.smallChangeHandler = this.smallChangeHandler.bind(this);
         this.saveAndClose = this.saveAndClose.bind(this);
         this.deleteHandler = this.deleteHandler.bind(this);
+        this.checkHandler = this.checkHandler.bind(this)
     }
 
     priorityFunc(index) {
@@ -36,7 +38,12 @@ export default class Todo extends Component {
     deleteHandler(){
         this.props.bigStateDeleter(this.props.index)
     }
-    
+    checkHandler(){
+        this.setState({
+            isChecked: !this.state.isChecked
+        })
+        
+    }
     
     
 
@@ -50,8 +57,8 @@ export default class Todo extends Component {
             (!isEditing) ?
 
                 <div>
-                    <input type='checkbox' />
-                    <span className='todoDescription font-weight-bold'>{description}</span>
+                    <input type='checkbox' checked={this.state.isChecked} onChange={this.checkHandler}/>
+                    <span className='todoDescription font-weight-bold'>{(!this.state.isChecked) ? description : <span className='text-white'>{description}     (COMPLETED)</span>}</span>
                     <a className='delete-todo glyphicon glyphicon-trash pull-right ml-4' onClick={this.deleteHandler}></a>
                     <a className='edit-todo glyphicon glyphicon-edit pull-right' onClick={this.toggleEditing}></a>
                 </div>
@@ -67,7 +74,7 @@ export default class Todo extends Component {
                     <div className='form-group'>
                         <label>Priority</label>
                         <select name='priority' className='update-todo-priority form-control col-5' onChange={this.smallChangeHandler}>
-                            <option value='Select a priority' disabled selected>Select a priority</option>
+                            <option value='Select a priority'>Select a priority</option>
                             <option value='1'>High Priority</option>
                             <option value='2'>Medium Priority</option>
                             <option value='3'>Low Priority</option>
