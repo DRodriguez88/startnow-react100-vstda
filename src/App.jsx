@@ -1,21 +1,44 @@
 import React, { Component } from 'react';
 import InputsCompo from './InputsCompo';
-import OutputsCompo from './OutputsCompo';
+import TodoList from './TodoList';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        todoList: []
+        todoList: [
+        ]
     }
     this.bigStateUpdater = this.bigStateUpdater.bind(this);
+    this.bigStateEdit = this.bigStateEdit.bind(this);
+    this.bigStateDeleter = this.bigStateDeleter.bind(this);
   }
 
-  bigStateUpdater (inputData) {
+  bigStateUpdater(inputData) {
     this.setState({
       todoList: this.state.todoList.concat(inputData)
     });
   }
+
+  bigStateEdit(index, state) {
+    const todoListCopy = [...this.state.todoList]
+    todoListCopy[index] = state
+
+    this.setState({
+      todoList: todoListCopy
+    })
+  }
+
+  bigStateDeleter(index){
+    const todoListCopy = [...this.state.todoList];
+    todoListCopy.splice(index, 1);
+
+    this.setState({
+      todoList: todoListCopy
+    },()=>console.log(this.state))
+  }
+
+
 
   render(){
     return(
@@ -29,7 +52,7 @@ export default class App extends Component {
           {<InputsCompo bigStateUpdater={this.bigStateUpdater}/>}
         </div>
         <div className='outputsCompo'>
-          {<OutputsCompo todoList={this.state.todoList}/>}
+          {<TodoList todoList={this.state.todoList} bigStateEdit={this.bigStateEdit} bigStateDeleter={this.bigStateDeleter}/>}
         </div>
       </div>
     )

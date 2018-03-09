@@ -4,9 +4,9 @@ export default class InputsCompo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            todos: [],
             description: '',
             priority: '0',
+            isEditing: false,
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -15,19 +15,12 @@ export default class InputsCompo extends Component {
     handleChange(e){
         this.setState({
             [e.target.name]: e.target.value
-        }, () => console.log(this.state))
+        })
       }
     
       handleClick(){
           if (this.state.priority < 1 || this.state.description.length < 1){alert('Please complete both fields');return}
-          else{
-        var newTodoObj = {
-            description : this.state.description,
-            priority : this.state.priority
-        };
-        this.setState({
-            todos: this.state.todos.concat(newTodoObj)
-        },this.props.bigStateUpdater(this.state))}
+          else{this.props.bigStateUpdater(this.state)}
       }    
     
     
@@ -57,7 +50,7 @@ export default class InputsCompo extends Component {
                         </select>
                     </div>
                     <div className='card-footer'>
-                        <button className='btn btn-success btn-block' onClick={this.handleClick}>Add</button>
+                        <button className='create-todo btn btn-success btn-block' onClick={this.handleClick}>Add</button>
                     </div>
                 </div>
             </div>
